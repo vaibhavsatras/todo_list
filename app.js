@@ -7,8 +7,14 @@ const todoRoute = require('./routers/todoRuter')
 const app = express()
 const PORT = process.env.PORT || 5000
 
+const configCors = {
+    origin: "*",
+    credential: true,
+    methods: ['GET','POST','DELETE']
+}
 
-app.use(cors())
+app.options("",cors(configCors))
+app.use(cors(configCors))
 app.use(express.json())
 
 app.use(express.urlencoded({extended:false}))
